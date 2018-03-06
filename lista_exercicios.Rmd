@@ -1,0 +1,78 @@
+---
+title: "Lista de Exercícios"
+author: "Samuel Macêdo"
+date: "5 de março de 2018"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
+knitr::opts_chunk$set(message = FALSE)
+```
+
+```{r bibliotecas}
+library(knitr)
+source("gerar_sequencia.R", encoding = "UTF-8")
+source("Estatistica_descritiva.R",encoding = "UTF-8")
+```
+
+```{r gerar_sequencias}
+assime <- c(-1.5, -0.8, -0.2, 0.2, 0.8, 1.5)
+curto <- c(0.15, 0.2, 0.26, 0.26, 0.3, 0.35)
+
+parametros <- data.frame(qtd_num = sample(25:40, 10, replace = TRUE),
+                         assimetria = sample(assime, 10, replace = TRUE), 
+                         curtose = sample(curto, 10, replace = TRUE),
+                         inicio = sample(1:20, 10, replace = TRUE)
+                         )
+result <- list()
+for( i in 1:10){
+  
+  result[[i]] <- gerar_sequencia(qtd_num = parametros$qtd_num[i],
+                                 target_assimetria = parametros$assimetria[i],
+                                 target_curtose = parametros$curtose[i],
+                                 inicio = parametros$inicio[i])
+  
+}
+
+```
+
+# Calcule assimetria e curtose. Classifique.
+
+### 1) `r sort(result[[1]]$sequencia)`
+       `r kable(result[[1]]$estatisticas_descritivas)`
+       
+### 2) `r sort(result[[2]]$sequencia)`
+       `r kable(result[[2]]$estatisticas_descritivas)`
+
+\newpage       
+### 3) `r sort(result[[3]]$sequencia)`
+       `r kable(result[[3]]$estatisticas_descritivas)`
+       
+### 4) `r sort(result[[4]]$sequencia)`
+       `r kable(result[[4]]$estatisticas_descritivas)`
+
+\newpage 
+### 5) `r sort(result[[5]]$sequencia)`
+       `r kable(result[[5]]$estatisticas_descritivas)`
+
+### 6) `r sort(result[[6]]$sequencia)`
+       `r kable(result[[6]]$estatisticas_descritivas)`
+
+\newpage        
+### 7) `r sort(result[[7]]$sequencia)`
+       `r kable(result[[7]]$estatisticas_descritivas)`
+       
+### 8) `r sort(result[[8]]$sequencia)`
+       `r kable(result[[8]]$estatisticas_descritivas)`
+
+\newpage 
+### 9) `r sort(result[[9]]$sequencia)`
+       `r kable(result[[9]]$estatisticas_descritivas)`
+       
+### 10) `r sort(result[[10]]$sequencia)`
+        `r kable(result[[10]]$estatisticas_descritivas)`
+       
+
+

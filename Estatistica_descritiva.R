@@ -44,9 +44,8 @@ curtose <- function(vet){
   # classificando
   if (k > 0.27) {
     resp$classificacao = "platicúrtico"} 
-  else {
-    resp$classificacao = "leptocúrtico"
-  }
+  if (k < 0.25){
+    resp$classificacao = "leptocúrtico"}
   
   resp
 }
